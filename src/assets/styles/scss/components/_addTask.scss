@@ -1,0 +1,39 @@
+// *********************************
+// addTask
+// *********************************
+
+.newTask {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 30px;
+
+  &__value {
+    height: 30px;
+    width: 100%;
+    padding: 0 90px 0 16px;
+    background: transparent;
+    border: 1px solid $font-color;
+    border-radius: 50px;
+    color: $font-color;
+  }
+
+  &__add {
+    position: absolute;
+    right: 0;
+    height: 30px;
+    margin-left: 16px;
+    padding: 0 16px;
+    border: 1px solid $font-color;
+    border-radius: 50px;
+    background-color: $font-color;
+    color: $main-color;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: $font-color;
+      background-color: $success-color;
+      border: 1px solid $font-color;
+    }
+  }
+}

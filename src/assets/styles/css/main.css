@@ -1,0 +1,124 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+button {
+  border: none;
+  cursor: pointer; }
+
+a {
+  text-decoration: none;
+  color: inherit; }
+
+body {
+  margin-bottom: 20px;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  color: #FDFFFC;
+  background: #011627; }
+  @media only screen and (max-width: 1024px) {
+    body {
+      font-size: 15px; } }
+  @media only screen and (max-width: 800px) {
+    body {
+      font-size: 13px; } }
+  @media only screen and (max-width: 512px) {
+    body {
+      font-size: 10px; } }
+  @media only screen and (max-width: 350px) {
+    body {
+      font-size: 8px; } }
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%; }
+
+.nav {
+  margin-bottom: 70px;
+  font-size: 3em;
+  border-bottom: 5px solid #FDFFFC; }
+
+.newTask {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 30px; }
+  .newTask__value {
+    height: 30px;
+    width: 100%;
+    padding: 0 90px 0 16px;
+    background: transparent;
+    border: 1px solid #FDFFFC;
+    border-radius: 50px;
+    color: #FDFFFC; }
+  .newTask__add {
+    position: absolute;
+    right: 0;
+    height: 30px;
+    margin-left: 16px;
+    padding: 0 16px;
+    border: 1px solid #FDFFFC;
+    border-radius: 50px;
+    background-color: #FDFFFC;
+    color: #011627;
+    transition: all 0.2s ease; }
+    .newTask__add:hover {
+      color: #FDFFFC;
+      background-color: #2DC473;
+      border: 1px solid #FDFFFC; }
+
+.tasks {
+  width: 100%; }
+  .tasks__task {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    height: 30px;
+    margin: 0 auto 10px;
+    padding: 0 16px 0 35px;
+    background-color: #FDFFFC;
+    border: 2px solid #FDFFFC;
+    border-radius: 50px;
+    color: #011627;
+    cursor: pointer;
+    overflow: hidden; }
+    .tasks__task--done {
+      background-color: #DEFFCE;
+      border: 2px solid #2DC473; }
+    .tasks__task .tasks__indicator {
+      position: absolute;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      width: 15px;
+      height: 15px; }
+      .tasks__task .tasks__indicator > * {
+        height: 100%;
+        width: 100%; }
+  .tasks__item--done {
+    text-decoration: line-through; }
+  .tasks__delete {
+    cursor: pointer;
+    color: rgba(231, 29, 54, 0.3);
+    transition: all 0.2s ease; }
+    .tasks__delete:hover {
+      color: #e71d36; }
+
+.footer {
+  position: fixed;
+  height: 20px;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 0.5em;
+  color: #011627;
+  background-color: #FDFFFC; }

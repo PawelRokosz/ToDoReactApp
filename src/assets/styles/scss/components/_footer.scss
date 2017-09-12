@@ -1,0 +1,16 @@
+// *********************************
+// Footer
+// *********************************
+
+.footer {
+  position: fixed;
+  height: 20px;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-size: 0.5em;
+  color: $main-color;
+  background-color: $font-color;
+}

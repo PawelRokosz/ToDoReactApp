@@ -1,0 +1,27 @@
+// *********************************
+// Global
+// *********************************
+
+body {
+  margin-bottom: 20px;
+  font-family: $main-font;
+  font-size: 16px;
+  color: $font-color;
+  background: $main-color;
+
+  @include respond-at-width(1024px){
+    font-size: 15px;
+  }
+
+  @include respond-at-width(800px){
+    font-size: 13px;
+  }
+
+  @include respond-at-width(512px){
+    font-size: 10px;
+  }
+
+  @include respond-at-width(350px){
+    font-size: 8px;
+  }
+}
