@@ -9,7 +9,6 @@ class AddTask extends React.Component {
     this.props.onAddTask(input.value, id);
     input.value = '';
     input.focus();
-
   }
 
   render() {

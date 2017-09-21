@@ -8,11 +8,9 @@ class Tasks extends React.Component {
   }
 
   render() {
-
     let tasks = this.props.tasks;
-    let ids = this.props.ids;
     tasks = tasks.map((item, index) => {
-      return <Task item={item} index={index} key={ids[index]} onDelete={(index) => this.handleDelete(index)}/>
+      return <Task item={item.task} index={index} key={item[index] + "__" + item.id} onDelete={(index) => this.handleDelete(index)}/>
     });
 
     return (

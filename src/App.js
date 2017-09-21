@@ -11,33 +11,34 @@ class App extends React.Component {
     super();
 
     this.state = {
-      tasks: ['Just type something', 'And click "Add Task"'],
-      id: [12345, 23456]
+      tasks: [
+        {
+          task: 'Just type something',
+          id: 12345
+        },
+        {
+          task: 'And click "Add Task"',
+          id: 23456
+        },
+      ]
     }
   }
 
   handleDelete(index) {
     let newTasks = this.state.tasks;
-    let newIds = this.state.id;
     newTasks.splice(index, 1);
-    newIds.splice(index, 1);
-
     this.setState({
-      tasks: newTasks,
-      id: newIds
+      tasks: newTasks
     })
   }
 
   handleAddTask(ref, id) {
     let newTasks = this.state.tasks;
-    let newIds = this.state.id;
     if(ref) {
-      newTasks.unshift(ref);
-      newIds.unshift(id);
+      newTasks.unshift({task: ref, id: id});
     }
     this.setState({
-      tasks: newTasks,
-      id: newIds
+      tasks: newTasks
     })
   }
 
@@ -46,7 +47,7 @@ class App extends React.Component {
       <div className="app">
         <Nav/>
         <AddTask onAddTask={(ref, id) => this.handleAddTask(ref, id)}/>
-        <Tasks tasks={this.state.tasks} ids={this.state.id} onDelete={(index) => this.handleDelete(index)}/>
+        <Tasks tasks={this.state.tasks} onDelete={(index) => this.handleDelete(index)}/>
         <Footer/>
       </div>
     );
