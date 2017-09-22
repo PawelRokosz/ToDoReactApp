@@ -1,6 +1,4 @@
 import React from 'react';
-import done from '../assets/images/done.png';
-import doneActive from '../assets/images/done-active.png';
 
 class Task extends React.Component {
   constructor(props) {
@@ -24,22 +22,20 @@ class Task extends React.Component {
 
  render() {
    let doneClass = null;
-   let doneImg = null;
+   let doneIcon = <i className="fa fa-square-o" aria-hidden="true"></i>;
    let doneItem = null;
 
    if (this.state.taskDone) {
      doneClass = 'tasks__task--done'
-     doneImg = doneActive;
+     doneIcon = <i className="fa fa-check-square-o" aria-hidden="true"></i>;
      doneItem = 'tasks__item--done'
-   } else {
-     doneImg = done;
    }
 
    return (
     <div className={`tasks__task ${doneClass}`} onClick={() => this.handleDoneClick()}>
-      <div className="tasks__indicator"><img src={doneImg} alt="done indicator img"/></div>
+      <div className="tasks__indicator">{doneIcon}</div>
       <span className={`tasks__item ${doneItem}`}>{this.props.item}</span>
-      <span className="tasks__delete" onClick={(e) => this.handleDeleteClick(e)}>delete</span>
+      <div className="tasks__delete" onClick={(e) => this.handleDeleteClick(e)}><i className="fa fa-trash-o" aria-hidden="true"></i></div>
     </div>
    );
  }
