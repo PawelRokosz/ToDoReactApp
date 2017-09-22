@@ -32,13 +32,9 @@
       left:10px;
       display: flex;
       align-items: center;
+      justify-content: center;
       width: 15px;
       height: 15px;
-
-      & > * {
-        height: 100%;
-        width: 100%;
-      }
     }
   }
 
@@ -49,13 +45,28 @@
     }
   }
 
+  &__options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &__delete {
-    cursor: pointer;
     color: rgba($danger-color, 0.3);
     transition: all 0.2s ease;
+    margin-left: 10px;
 
     &:hover {
       color: rgba($danger-color, 1);
+    }
+  }
+
+  &__edit {
+    color: rgba($edit-color, 0.3);
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: rgba($edit-color, 1);
     }
   }
 }

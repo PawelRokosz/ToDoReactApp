@@ -5,6 +5,7 @@ import Nav from './components/Nav';
 import AddTask from './components/AddTask';
 import Tasks from './components/Tasks';
 import Footer from './components/Footer';
+import EditTask from './components/EditTask';
 
 class App extends React.Component {
   constructor() {
@@ -20,7 +21,9 @@ class App extends React.Component {
           task: 'And click "Add Task"',
           id: 23456
         },
-      ]
+      ],
+      editTask: false,
+      editedTask: null
     }
   }
 
@@ -29,6 +32,30 @@ class App extends React.Component {
     newTasks.splice(index, 1);
     this.setState({
       tasks: newTasks
+    })
+  }
+
+  handleEditStart(index) {
+    this.setState({
+      editTask: !this.state.editTask,
+      editedTask: index
+    })
+  }
+
+  handleEdit(ref) {
+    let index = this.state.editedTask;
+    let newTasks = this.state.tasks;
+
+    newTasks[index].task = ref;
+
+    this.setState({
+      tasks: newTasks
+    })
+  }
+
+  handleClose() {
+    this.setState({
+      editTask: false
     })
   }
 
@@ -43,11 +70,18 @@ class App extends React.Component {
   }
 
   render() {
+    let EditMyTask = null;
+
+    if (this.state.editTask === true) {
+      EditMyTask = <EditTask onCloseClick={() => this.handleClose()} onEditTask={(ref) => this.handleEdit(ref)}/>
+    }
+
     return (
       <div className="app">
+        {EditMyTask}
         <Nav/>
         <AddTask onAddTask={(ref, id) => this.handleAddTask(ref, id)}/>
-        <Tasks tasks={this.state.tasks} onDelete={(index) => this.handleDelete(index)}/>
+        <Tasks tasks={this.state.tasks} onDelete={(index) => this.handleDelete(index)} onEdit={(index) => this.handleEditStart(index)}/>
         <Footer/>
       </div>
     );
