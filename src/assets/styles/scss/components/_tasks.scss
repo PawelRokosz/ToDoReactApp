@@ -14,7 +14,7 @@
     max-width: 500px;
     height: 30px;
     margin: 0 auto 10px;
-    padding: 0 16px 0 35px;
+    padding: 0 16px;
     background-color: $font-color;
     border: 2px solid $font-color;
     border-radius: 50px;
@@ -26,16 +26,22 @@
       background-color: #DEFFCE;
       border: 2px solid $success-color;
     }
+  }
 
-    .tasks__indicator {
-      position: absolute;
-      left:10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 15px;
-      height: 15px;
-    }
+  &__info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%;
+  }
+
+  &__indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    margin-right: 5%;
   }
 
   &__item {
@@ -47,11 +53,15 @@
 
   &__options {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    width: 20%;
   }
 
   &__delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: rgba($danger-color, 0.3);
     transition: all 0.2s ease;
     margin-left: 10px;
@@ -62,6 +72,9 @@
   }
 
   &__edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: rgba($edit-color, 0.3);
     transition: all 0.2s ease;
 

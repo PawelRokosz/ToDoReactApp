@@ -125,7 +125,7 @@ body {
     max-width: 500px;
     height: 30px;
     margin: 0 auto 10px;
-    padding: 0 16px 0 35px;
+    padding: 0 16px;
     background-color: #FDFFFC;
     border: 2px solid #FDFFFC;
     border-radius: 50px;
@@ -135,27 +135,38 @@ body {
     .tasks__task--done {
       background-color: #DEFFCE;
       border: 2px solid #2DC473; }
-    .tasks__task .tasks__indicator {
-      position: absolute;
-      left: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 15px;
-      height: 15px; }
+  .tasks__info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 80%; }
+  .tasks__indicator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+    height: 15px;
+    margin-right: 5%; }
   .tasks__item--done {
     text-decoration: line-through; }
   .tasks__options {
     display: flex;
-    justify-content: center;
-    align-items: center; }
+    justify-content: flex-end;
+    align-items: center;
+    width: 20%; }
   .tasks__delete {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: rgba(231, 29, 54, 0.3);
     transition: all 0.2s ease;
     margin-left: 10px; }
     .tasks__delete:hover {
       color: #e71d36; }
   .tasks__edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: rgba(28, 103, 231, 0.3);
     transition: all 0.2s ease; }
     .tasks__edit:hover {
