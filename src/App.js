@@ -1,4 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import actions from './actions'
+
 import './assets/styles/css/main.css';
 
 import Nav from './components/Nav';
@@ -7,85 +11,51 @@ import Tasks from './components/Tasks';
 import Footer from './components/Footer';
 import EditTask from './components/EditTask';
 
-class App extends React.Component {
-  constructor() {
-    super();
+function mapStateToProps(state) {
+  return (state)
+}
 
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
+}
+
+class App extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
-      tasks: [
-        {
-          task: 'Just type something',
-          id: 12345
-        },
-        {
-          task: 'And click "Add Task"',
-          id: 23456
-        },
-      ],
-      editTask: false,
-      editedTask: null
+      taskForEdit: null
     }
   }
 
-  handleDelete(index) {
-    let newTasks = this.state.tasks;
-    newTasks.splice(index, 1);
+  startTaskForEdit = (id) => {
     this.setState({
-      tasks: newTasks
+      taskForEdit: id
     })
   }
 
-  handleEditStart(index) {
+  closeTaskForEdit = () => {
     this.setState({
-      editTask: !this.state.editTask,
-      editedTask: index
-    })
-  }
-
-  handleEdit(ref) {
-    let index = this.state.editedTask;
-    let newTasks = this.state.tasks;
-
-    newTasks[index].task = ref;
-
-    this.setState({
-      tasks: newTasks
-    })
-  }
-
-  handleClose() {
-    this.setState({
-      editTask: false
-    })
-  }
-
-  handleAddTask(ref, id) {
-    let newTasks = this.state.tasks;
-    if(ref) {
-      newTasks.unshift({task: ref, id: id});
-    }
-    this.setState({
-      tasks: newTasks
+      taskForEdit: null
     })
   }
 
   render() {
-    let EditMyTask = null;
-
-    if (this.state.editTask === true) {
-      EditMyTask = <EditTask onCloseClick={() => this.handleClose()} onEditTask={(ref) => this.handleEdit(ref)}/>
-    }
+    let { taskForEdit } = this.state;
+    let { tasks } = this.props;
+    let { handleEditTask, handleDeleteTask, handleCompleteTask, handleAddTask } = this.props.actions;
 
     return (
       <div className="app">
-        {EditMyTask}
+        { taskForEdit && <EditTask taskForEdit={taskForEdit} closeTaskForEdit={this.closeTaskForEdit} handleEditTask={handleEditTask}/> }
         <Nav/>
-        <AddTask onAddTask={(ref, id) => this.handleAddTask(ref, id)}/>
-        <Tasks tasks={this.state.tasks} onDelete={(index) => this.handleDelete(index)} onEdit={(index) => this.handleEditStart(index)}/>
+        <AddTask handleAddTask={handleAddTask}/>
+        <Tasks tasks={tasks} handleDeleteTask={handleDeleteTask} handleCompleteTask={handleCompleteTask} startTaskForEdit={this.startTaskForEdit}/>
         <Footer/>
       </div>
     );
   }
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

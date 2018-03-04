@@ -1,54 +1,43 @@
 import React from 'react';
 
-class Task extends React.Component {
-  constructor(props) {
-    super(props);
+const Task = ({ item, handleDeleteTask, handleCompleteTask, startTaskForEdit }) => {
 
-    this.state = {
-      taskDone: false
-    }
-  }
-
-  handleDeleteClick(e) {
+  const handleDeleteClick = (e) => {
     e.stopPropagation();
-    this.props.onDelete(this.props.index);
+    handleDeleteTask(item.id)
   }
 
-  handleEditClick(e) {
+  const handleStartTaskForEdit = (e) => {
     e.stopPropagation();
-    this.props.onEdit(this.props.index);
+    startTaskForEdit(item.id)
   }
 
-  handleDoneClick() {
-    this.setState({
-      taskDone: !this.state.taskDone
-    })
+  const handleCompleteClick = () => {
+    handleCompleteTask(item.id)
   }
 
- render() {
-   let doneClass = null;
-   let doneIcon = <i className="fa fa-square-o" aria-hidden="true"></i>;
-   let doneItem = null;
+ let doneClass = null;
+ let doneIcon = <i className="fa fa-square-o" aria-hidden="true"></i>;
+ let doneItem = null;
 
-   if (this.state.taskDone) {
-     doneClass = 'tasks__task--done'
-     doneIcon = <i className="fa fa-check-square-o" aria-hidden="true"></i>;
-     doneItem = 'tasks__item--done'
-   }
-
-   return (
-    <div className={`tasks__task ${doneClass}`} onClick={() => this.handleDoneClick()}>
-      <div className="tasks__info">
-        <div className="tasks__indicator">{doneIcon}</div>
-        <span className={`tasks__item ${doneItem}`}>{this.props.item}</span>
-      </div>
-      <div className="tasks__options">
-        <div className="tasks__edit" onClick={(e) => this.handleEditClick(e)}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>
-        <div className="tasks__delete" onClick={(e) => this.handleDeleteClick(e)}><i className="fa fa-trash-o" aria-hidden="true"></i></div>
-      </div>
-    </div>
-   );
+ if (item.completed) {
+   doneClass = 'tasks__task--done'
+   doneIcon = <i className="fa fa-check-square-o" aria-hidden="true"></i>;
+   doneItem = 'tasks__item--done'
  }
+
+ return (
+  <div className={`tasks__task ${doneClass}`} onClick={handleCompleteClick}>
+    <div className="tasks__info">
+      <div className="tasks__indicator">{doneIcon}</div>
+      <span className={`tasks__item ${doneItem}`}>{item.task}</span>
+    </div>
+    <div className="tasks__options">
+      <div className="tasks__edit" onClick={handleStartTaskForEdit}><i className="fa fa-pencil-square-o" aria-hidden="true"></i></div>
+      <div className="tasks__delete" onClick={handleDeleteClick}><i className="fa fa-trash-o" aria-hidden="true"></i></div>
+    </div>
+  </div>
+ );
 }
 
 export default Task;

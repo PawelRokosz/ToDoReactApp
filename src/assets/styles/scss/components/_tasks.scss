@@ -21,10 +21,15 @@
     color: $main-color;
     cursor: pointer;
     overflow: hidden;
+    transition: all 0.2s ease;
 
     &--done {
       background-color: #DEFFCE;
       border: 2px solid $success-color;
+    }
+
+    &:hover {
+      background-color: #DEFFCE;
     }
   }
 

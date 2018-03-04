@@ -131,10 +131,13 @@ body {
     border-radius: 50px;
     color: #011627;
     cursor: pointer;
-    overflow: hidden; }
+    overflow: hidden;
+    transition: all 0.2s ease; }
     .tasks__task--done {
       background-color: #DEFFCE;
       border: 2px solid #2DC473; }
+    .tasks__task:hover {
+      background-color: #DEFFCE; }
   .tasks__info {
     display: flex;
     justify-content: flex-start;
