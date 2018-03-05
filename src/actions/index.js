@@ -20,10 +20,9 @@ let actions = {
     }
   },
 
-  handleEditTask: function(id, task) {
+  handleEditTask: function(task) {
     return {
       type: 'EDIT_TASK',
-      id: id,
       task: task
     }
   }

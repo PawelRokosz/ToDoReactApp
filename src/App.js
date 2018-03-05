@@ -30,8 +30,11 @@ class App extends Component {
   }
 
   startTaskForEdit = (id) => {
+    const { tasks } = this.props;
+    //TODO: fetch task and prepare task object for <EditTask />
+    const currentTask = tasks.find(task => task.id === id)
     this.setState({
-      taskForEdit: id
+      taskForEdit: Object.assign({}, currentTask)
     })
   }
 
@@ -42,10 +45,13 @@ class App extends Component {
   }
 
   render() {
-    let { taskForEdit } = this.state;
-    let { tasks } = this.props;
-    let { handleEditTask, handleDeleteTask, handleCompleteTask, handleAddTask } = this.props.actions;
+    const { taskForEdit } = this.state;
+    const { tasks, actions } = this.props;
+    const { handleEditTask, handleDeleteTask, handleCompleteTask, handleAddTask } = actions;
 
+// TODO:
+// <EditTask task onSubmit onClose />
+// <Tasks onDelete onComplete onEditSelect >
     return (
       <div className="app">
         { taskForEdit && <EditTask taskForEdit={taskForEdit} closeTaskForEdit={this.closeTaskForEdit} handleEditTask={handleEditTask}/> }
