@@ -8,7 +8,13 @@ const Tasks = ({ tasks, handleDeleteTask, handleCompleteTask, startTaskForEdit }
     <div className="tasks">
       {
         tasks.map((item, index) => {
-          return <Task item={item} index={index} key={item[index] + "__" + item.id} handleDeleteTask={handleDeleteTask} handleCompleteTask={handleCompleteTask} startTaskForEdit={startTaskForEdit}/>
+          return <Task
+                    item={item}
+                    index={index}
+                    key={item[index] + "__" + item.id}
+                    handleDeleteTask={handleDeleteTask}
+                    handleCompleteTask={handleCompleteTask}
+                    startTaskForEdit={startTaskForEdit} />
         })
       }
     </div>
