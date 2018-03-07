@@ -1,6 +1,6 @@
 import shortid from 'shortid'
 
-let tasksReducer = function(tasks = [], action) {
+const tasksReducer = function(tasks = [], action) {
   switch (action.type) {
     case 'ADD_TASK':
       return [{

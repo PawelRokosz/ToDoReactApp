@@ -1,4 +1,4 @@
-let actions = {
+const actions = {
   handleAddTask: function(task) {
     return {
       type: 'ADD_TASK',

@@ -46,9 +46,9 @@ class App extends Component {
   }
 
   render() {
-    let { taskForEdit } = this.state;
-    let { tasks, actions } = this.props;
-    let { handleEditTask, handleDeleteTask, handleCompleteTask, handleAddTask } = actions;
+    const { taskForEdit } = this.state;
+    const { tasks, actions } = this.props;
+    const { handleEditTask, handleDeleteTask, handleCompleteTask, handleAddTask } = actions;
 
     return (
       <div className="app">
