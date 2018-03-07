@@ -6,7 +6,6 @@ let tasksReducer = function(tasks = [], action) {
       return [{
         task: action.task,
         completed: false,
-        forEdit: false,
         id: shortid.generate()
       }, ...tasks]
     case 'DELETE_TASK':
@@ -21,8 +20,8 @@ let tasksReducer = function(tasks = [], action) {
       })
       case 'EDIT_TASK':
         return tasks.map(task => {
-          return task.id === action.id
-            ? Object.assign({}, task, { task: action.task })
+          return task.id === action.task.id
+            ? Object.assign({}, task, action.task )
             : task
         })
     default:

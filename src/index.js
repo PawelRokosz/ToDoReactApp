@@ -9,13 +9,11 @@ let initialState = {
     {
       id: 1,
       completed: false,
-      forEdit: false,
       task: 'Just type something',
     },
     {
       id: 2,
       completed: false,
-      forEdit: false,
       task: 'And click "Add Task"'
     }
   ]

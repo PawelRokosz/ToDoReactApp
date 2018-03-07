@@ -9,7 +9,7 @@ const Task = ({ item, handleDeleteTask, handleCompleteTask, startTaskForEdit }) 
 
   const handleStartTaskForEdit = (e) => {
     e.stopPropagation();
-    startTaskForEdit(item.id)
+    startTaskForEdit(item)
   }
 
   const handleCompleteClick = () => {
