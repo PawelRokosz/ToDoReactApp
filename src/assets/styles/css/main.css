@@ -115,6 +115,7 @@ body {
       color: #E71D36; }
 
 .tasks {
+  position: relative;
   width: 100%; }
   .tasks__task {
     position: relative;
@@ -138,6 +139,13 @@ body {
       border: 2px solid #2DC473; }
     .tasks__task:hover {
       background-color: #DEFFCE; }
+  .tasks__drag {
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    background: red; }
   .tasks__info {
     display: flex;
     justify-content: flex-start;

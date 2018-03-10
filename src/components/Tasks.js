@@ -2,7 +2,7 @@ import React from 'react';
 
 import Task from './Task';
 
-const Tasks = ({ tasks, handleDeleteTask, handleCompleteTask, startTaskForEdit }) => {
+const Tasks = ({ tasks, handleDeleteTask, handleCompleteTask, startTaskForEdit, startTaskForDrag, overTaskDrag, taskDrop }) => {
 
   return (
     <div className="tasks">
@@ -11,10 +11,14 @@ const Tasks = ({ tasks, handleDeleteTask, handleCompleteTask, startTaskForEdit }
           return <Task
                     item={item}
                     index={index}
-                    key={item[index] + "__" + item.id}
+                    key={item.id}
                     handleDeleteTask={handleDeleteTask}
                     handleCompleteTask={handleCompleteTask}
-                    startTaskForEdit={startTaskForEdit} />
+                    startTaskForEdit={startTaskForEdit}
+                    startTaskForDrag={startTaskForDrag}
+                    overTaskDrag={overTaskDrag}
+                    taskDrop={taskDrop}
+                  />
         })
       }
     </div>

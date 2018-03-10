@@ -25,7 +25,10 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      taskForEdit: null
+      taskForEdit: null,
+      startTaskIndex: null,
+      endTaskIndex: null,
+      startTask: null
     }
   }
 
@@ -43,6 +46,26 @@ class App extends Component {
     this.setState({
       taskForEdit: null
     })
+  }
+
+  startTaskForDrag = (item, index) => {
+    const startTask = this.props.tasks.find(task => {
+      return task.id === item.id
+    })
+    this.setState({
+      startTaskIndex: index,
+      startTask: startTask
+    })
+  }
+
+  overTaskDrag = (index) => {
+    this.setState({
+      endTaskIndex: index
+    })
+  }
+
+  taskDrop = () => {
+    this.props.actions.handleDropTask(this.state.startTaskIndex, this.state.endTaskIndex, this.state.startTask)
   }
 
   render() {
@@ -64,7 +87,12 @@ class App extends Component {
           tasks={tasks}
           handleDeleteTask={handleDeleteTask}
           handleCompleteTask={handleCompleteTask}
-          startTaskForEdit={this.startTaskForEdit} />
+          startTaskForEdit={this.startTaskForEdit}
+          startTaskForDrag={this.startTaskForDrag}
+          endTaskForDrag={this.endTaskForDrag}
+          overTaskDrag={this.overTaskDrag}
+          taskDrop={this.taskDrop}
+        />
         <Footer/>
       </div>
     );

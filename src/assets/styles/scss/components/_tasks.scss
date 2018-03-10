@@ -3,6 +3,7 @@
 // *********************************
 
 .tasks {
+  position: relative;
   width: 100%;
 
   &__task {
@@ -31,6 +32,16 @@
     &:hover {
       background-color: #DEFFCE;
     }
+  }
+
+  &__drag {
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+
+    background: red;
   }
 
   &__info {

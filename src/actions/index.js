@@ -25,7 +25,18 @@ const actions = {
       type: 'EDIT_TASK',
       task: task
     }
+  },
+
+  handleDropTask: function(startTaskIndex, endTaskIndex, startTask) {
+    return {
+      type: 'DROP_TASK',
+      startTaskIndex: startTaskIndex,
+      endTaskIndex: endTaskIndex,
+      startTask: startTask
+    }
   }
+
+
 }
 
 export default actions

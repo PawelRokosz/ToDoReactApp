@@ -24,6 +24,15 @@ const tasksReducer = function(tasks = [], action) {
             ? Object.assign({}, task, action.task )
             : task
         })
+      case 'DROP_TASK':
+        const newTasks = tasks.filter(task => {
+          return task.id !== action.startTask.id
+        })
+        return [
+            ...newTasks.slice(0, action.endTaskIndex),
+            action.startTask,
+            ...newTasks.slice(action.endTaskIndex)
+          ]
     default:
       return tasks
   }
